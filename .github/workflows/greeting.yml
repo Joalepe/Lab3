@@ -1,0 +1,16 @@
+# Kommentoi, kun käyttäjä avaa ensimmäisen pull requestin
+name: Greet when a user opens first Request 
+on: 
+  pull_request:
+    types: opened
+    
+jobs: 
+  greeting: 
+    runs-on: ubuntu-latest 
+    permissions: 
+      pull-requests: write
+    steps: 
+    - uses: actions/first-interaction@v1 
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }} 
+        pr-message: "Thanks for the first Pull Request"
